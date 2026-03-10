@@ -1,0 +1,38 @@
+# Maven build output
+target/
+*.class
+
+# Test output & reports
+test-output/
+surefire-reports/
+
+# Screenshots (keep placeholder)
+screenshots/*
+!screenshots/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# Eclipse IDE
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Claude AI
+.claude/
+.metadata/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Sensitive config (do not commit credentials)
+src/test/resources/local.properties
