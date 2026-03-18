@@ -18,12 +18,13 @@ public class DriverManager {
     private static final ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
 
     private DriverManager() {
-        // Utility class — no instantiation
+        // Utility class - no instantiation
     }
 
     /**
      * Creates a new ChromeDriver instance for the current thread and stores it
-     * in ThreadLocal. WebDriverManager handles the ChromeDriver binary automatically.
+     * in ThreadLocal. WebDriverManager handles the ChromeDriver binary
+     * automatically.
      */
     public static void setDriver() {
         log.info("Setting up ChromeDriver for thread: {}", Thread.currentThread().getName());

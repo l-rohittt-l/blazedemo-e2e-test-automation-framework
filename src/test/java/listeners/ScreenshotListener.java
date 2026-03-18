@@ -20,13 +20,13 @@ import java.time.format.DateTimeFormatter;
 public class ScreenshotListener implements ITestListener {
 
     private static final Logger log = LoggerFactory.getLogger(ScreenshotListener.class);
-    private static final DateTimeFormatter TIMESTAMP_FORMAT =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
+    private static final DateTimeFormatter TIMESTAMP_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
     private static final String SCREENSHOTS_DIR = "screenshots";
 
     @Override
     public void onTestFailure(ITestResult result) {
-        // Build a name that includes data provider parameters so rows are distinguishable.
+        // Build a name that includes data provider parameters so rows are
+        // distinguishable.
         // e.g. testFlightBooking[Philadelphia-BuenosAires]_2026-03-09_10-00-00.png
         String methodName = result.getMethod().getMethodName();
         Object[] params = result.getParameters();
@@ -41,7 +41,7 @@ public class ScreenshotListener implements ITestListener {
     private void captureScreenshot(String testMethodName) {
         WebDriver driver = DriverManager.getDriver();
         if (driver == null) {
-            log.warn("Cannot capture screenshot — driver is null for test: {}", testMethodName);
+            log.warn("Cannot capture screenshot - driver is null for test: {}", testMethodName);
             return;
         }
 

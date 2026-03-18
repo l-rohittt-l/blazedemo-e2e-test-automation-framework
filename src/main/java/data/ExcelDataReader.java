@@ -19,7 +19,7 @@ public class ExcelDataReader {
     private static final Logger log = LoggerFactory.getLogger(ExcelDataReader.class);
 
     private ExcelDataReader() {
-        // Utility class — no instantiation
+        // Utility class - no instantiation
     }
 
     /**
@@ -29,7 +29,8 @@ public class ExcelDataReader {
      * Row 0 (header) is skipped. Each subsequent row is read as 12 String values
      * matching the booking data schema defined in DESIGN.md Section 8.
      *
-     * @param fileName file name only (e.g. "bookings.xlsx") — resolved from testdata/
+     * @param fileName file name only (e.g. "bookings.xlsx") - resolved from
+     *                 testdata/
      * @return Object[][] where each row is a String[12] of booking data
      */
     public static Object[][] getData(String fileName) {
@@ -50,7 +51,7 @@ public class ExcelDataReader {
                 DataFormatter formatter = new DataFormatter();
                 List<Object[]> dataRows = new ArrayList<>();
 
-                // Row 0 is the header — start from row index 1
+                // Row 0 is the header - start from row index 1
                 for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
                     Row row = sheet.getRow(rowIndex);
                     if (row == null) {
@@ -63,7 +64,7 @@ public class ExcelDataReader {
                     dataRows.add(rowData);
                 }
 
-                log.info("Excel data read complete — {} data row(s) loaded", dataRows.size());
+                log.info("Excel data read complete - {} data row(s) loaded", dataRows.size());
                 return dataRows.toArray(new Object[0][]);
             }
 

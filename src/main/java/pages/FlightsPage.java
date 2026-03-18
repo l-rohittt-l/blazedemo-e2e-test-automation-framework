@@ -13,8 +13,8 @@ public class FlightsPage {
     private final WebDriver driver;
 
     // Locators
-    private static final By FLIGHTS_TABLE      = By.cssSelector("table.table");
-    private static final By FLIGHT_TABLE_ROWS  = By.cssSelector("table.table tbody tr");
+    private static final By FLIGHTS_TABLE = By.cssSelector("table.table");
+    private static final By FLIGHT_TABLE_ROWS = By.cssSelector("table.table tbody tr");
     private static final By FIRST_CHOOSE_BUTTON = By.cssSelector("input[value='Choose This Flight']");
 
     public FlightsPage(WebDriver driver) {
@@ -42,6 +42,6 @@ public class FlightsPage {
     public void selectFirstFlight() {
         log.info("Selecting first available flight");
         WaitUtils.waitForClickability(FIRST_CHOOSE_BUTTON).click();
-        log.info("First flight selected — navigating to purchase page");
+        log.info("First flight selected - navigating to purchase page");
     }
 }

@@ -17,7 +17,7 @@ public class CsvDataReader {
     private static final Logger log = LoggerFactory.getLogger(CsvDataReader.class);
 
     private CsvDataReader() {
-        // Utility class — no instantiation
+        // Utility class - no instantiation
     }
 
     /**
@@ -26,7 +26,8 @@ public class CsvDataReader {
      * Row 0 (header) is skipped. Each subsequent row is read as 12 String values
      * matching the booking data schema defined in DESIGN.md Section 8.
      *
-     * @param fileName file name only (e.g. "bookings.csv") — resolved from testdata/
+     * @param fileName file name only (e.g. "bookings.csv") - resolved from
+     *                 testdata/
      * @return Object[][] where each row is a String[12] of booking data
      */
     public static Object[][] getData(String fileName) {
@@ -65,7 +66,7 @@ public class CsvDataReader {
                     dataRows.add(rowData);
                 }
 
-                log.info("CSV data read complete — {} data row(s) loaded", dataRows.size());
+                log.info("CSV data read complete - {} data row(s) loaded", dataRows.size());
                 return dataRows.toArray(new Object[0][]);
             }
 

@@ -15,18 +15,18 @@ public class WaitUtils {
     private static final Logger log = LoggerFactory.getLogger(WaitUtils.class);
 
     private WaitUtils() {
-        // Utility class — no instantiation
+        // Utility class - no instantiation
     }
 
     /**
      * Returns a WebDriverWait instance using the timeout from config.properties.
-     * A new instance is created each time to always use the current thread's driver.
+     * A new instance is created each time to always use the current thread's
+     * driver.
      */
     private static WebDriverWait buildWait() {
         return new WebDriverWait(
                 DriverManager.getDriver(),
-                Duration.ofSeconds(ConfigReader.getBrowserTimeout())
-        );
+                Duration.ofSeconds(ConfigReader.getBrowserTimeout()));
     }
 
     /**

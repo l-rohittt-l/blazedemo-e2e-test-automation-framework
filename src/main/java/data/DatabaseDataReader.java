@@ -17,8 +17,10 @@ public class DatabaseDataReader {
     private static final Logger log = LoggerFactory.getLogger(DatabaseDataReader.class);
 
     /**
-     * Column names in the flight_bookings table, in schema order (DESIGN.md Section 8).
-     * The SELECT query uses explicit column ordering to guarantee Object[][] alignment
+     * Column names in the flight_bookings table, in schema order (DESIGN.md Section
+     * 8).
+     * The SELECT query uses explicit column ordering to guarantee Object[][]
+     * alignment
      * regardless of the physical column order in the database.
      */
     private static final String[] COLUMNS = {
@@ -37,33 +39,37 @@ public class DatabaseDataReader {
     };
 
     private DatabaseDataReader() {
-        // Utility class — no instantiation
+        // Utility class - no instantiation
     }
 
     /**
-     * Reads all rows from the configured MySQL table and returns them as Object[][].
+     * Reads all rows from the configured MySQL table and returns them as
+     * Object[][].
      *
-     * Connection details are read exclusively from ConfigReader (config.properties):
-     *   db.url, db.username, db.password, db.table
+     * Connection details are read exclusively from ConfigReader
+     * (config.properties):
+     * db.url, db.username, db.password, db.table
      *
-     * NOTE: Update config.properties with real credentials before using this reader.
+     * NOTE: Update config.properties with real credentials before using this
+     * reader.
      * The database and table must exist and be populated (see create_table.sql).
      *
-     * @return Object[][] where each row is a String[12] matching the 12-column booking schema
+     * @return Object[][] where each row is a String[12] matching the 12-column
+     *         booking schema
      */
     public static Object[][] getData() {
-        String dbUrl      = ConfigReader.getDbUrl();
+        String dbUrl = ConfigReader.getDbUrl();
         String dbUsername = ConfigReader.getDbUsername();
         String dbPassword = ConfigReader.getDbPassword();
-        String dbTable    = ConfigReader.getDbTable();
+        String dbTable = ConfigReader.getDbTable();
 
         log.info("Connecting to database: {}", dbUrl);
 
         String query = buildSelectQuery(dbTable);
 
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-             Statement statement   = connection.createStatement();
-             ResultSet resultSet   = statement.executeQuery(query)) {
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query)) {
 
             log.info("Database connection established. Executing query: {}", query);
 
@@ -78,14 +84,15 @@ public class DatabaseDataReader {
                 dataRows.add(rowData);
             }
 
-            log.info("Database read complete — {} data row(s) loaded", dataRows.size());
+            log.info("Database read complete - {} data row(s) loaded", dataRows.size());
             return dataRows.toArray(new Object[0][]);
 
         } catch (SQLException e) {
             throw new RuntimeException(
                     "Failed to read test data from database. " +
-                    "Ensure db.* values in config.properties are correct and the database is running. " +
-                    "Error: " + e.getMessage(), e);
+                            "Ensure db.* values in config.properties are correct and the database is running. " +
+                            "Error: " + e.getMessage(),
+                    e);
         }
     }
 

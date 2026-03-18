@@ -24,7 +24,7 @@ public class ConfigReader {
     }
 
     private ConfigReader() {
-        // Utility class — no instantiation
+        // Utility class - no instantiation
     }
 
     public static String getBaseUrl() {
